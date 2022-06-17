@@ -1,4 +1,3 @@
-// /pages/_app.tsx
 import '../styles/tailwind.css'
 import Layout from '../components/Layout'
 import { ApolloProvider } from '@apollo/client'
