@@ -1,4 +1,3 @@
-// /graphql/resolvers.ts
 export const resolvers = {
   Query: {
     links: (_parent, _args, ctx) => {
