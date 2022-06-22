@@ -78,7 +78,7 @@ const Admin = () => {
         .then();
       console.log(toast.success);
       if (toast.success) {
-        router.push("/");
+        router.push("/", null, { shallow: false });
       }
     } catch (error) {
       console.error(error);
