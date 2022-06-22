@@ -73,9 +73,9 @@ const Admin = () => {
         loading: 'Creating new link..',
         success: 'Link successfully created!🎉',
         error: `Something went wrong 😥 Please try again -  ${error}`,
-      });
+      }).then(router.push("/"))
 
-      router.push("/")
+      
 
     } catch (error) {
       console.error(error);
