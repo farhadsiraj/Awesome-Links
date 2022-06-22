@@ -23,3 +23,4 @@
 - [NextJS](https://nextjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Auth0](https://auth0.com/)
+- [Vercel](https://vercel.com/)
