@@ -4,6 +4,7 @@ import { gql, useMutation } from '@apollo/client'
 import toast, { Toaster } from 'react-hot-toast'
 import { getSession } from '@auth0/nextjs-auth0'
 import prisma from '../lib/prisma'
+import Router, {useRouter} from 'next/router'
 
 const CreateLinkMutation = gql`
   mutation (
@@ -30,6 +31,7 @@ const CreateLinkMutation = gql`
 `;
 
 const Admin = () => {
+  const router = useRouter()
   const [createLink, { data, loading, error }] =
     useMutation(CreateLinkMutation);
   const {
@@ -72,6 +74,9 @@ const Admin = () => {
         success: 'Link successfully created!🎉',
         error: `Something went wrong 😥 Please try again -  ${error}`,
       });
+
+      router.push("/")
+
     } catch (error) {
       console.error(error);
     }
