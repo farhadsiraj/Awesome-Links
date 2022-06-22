@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { gql, useMutation } from '@apollo/client'
-import toast, { Toaster } from 'react-hot-toast'
-import { getSession } from '@auth0/nextjs-auth0'
-import prisma from '../lib/prisma'
-import Router, {useRouter} from 'next/router'
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { gql, useMutation } from "@apollo/client";
+import toast, { Toaster } from "react-hot-toast";
+import { getSession } from "@auth0/nextjs-auth0";
+import prisma from "../lib/prisma";
+import Router, { useRouter } from "next/router";
 
 const CreateLinkMutation = gql`
   mutation (
@@ -31,7 +31,7 @@ const CreateLinkMutation = gql`
 `;
 
 const Admin = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [createLink, { data, loading, error }] =
     useMutation(CreateLinkMutation);
   const {
@@ -53,12 +53,12 @@ const Admin = () => {
 
     toast.promise(
       fetch(data.url, {
-        method: 'POST',
+        method: "POST",
         body: formData,
       }),
       {
-        loading: 'Uploading...',
-        success: 'Image successfully uploaded!🎉',
+        loading: "Uploading...",
+        success: "Image successfully uploaded!🎉",
         error: `Upload failed 😥 Please try again ${error}`,
       }
     );
@@ -69,14 +69,17 @@ const Admin = () => {
     const imageUrl = `https://${process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME}.s3.amazonaws.com/${image[0].name}`;
     const variables = { title, url, category, description, imageUrl };
     try {
-      toast.promise(createLink({ variables }), {
-        loading: 'Creating new link..',
-        success: 'Link successfully created!🎉',
-        error: `Something went wrong 😥 Please try again -  ${error}`,
-      }).then(router.push("/"))
-
-      
-
+      toast
+        .promise(createLink({ variables }), {
+          loading: "Creating new link..",
+          success: "Link successfully created!🎉",
+          error: `Something went wrong 😥 Please try again -  ${error}`,
+        })
+        .then();
+      console.log(toast.success);
+      if (toast.success) {
+        router.push("/");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -96,7 +99,7 @@ const Admin = () => {
             placeholder="Title"
             name="title"
             type="text"
-            {...register('title', { required: true })}
+            {...register("title", { required: true })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
         </label>
@@ -104,7 +107,7 @@ const Admin = () => {
           <span className="text-gray-700">Description</span>
           <input
             placeholder="Description"
-            {...register('description', { required: true })}
+            {...register("description", { required: true })}
             name="description"
             type="text"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -114,7 +117,7 @@ const Admin = () => {
           <span className="text-gray-700">Url</span>
           <input
             placeholder="https://example.com"
-            {...register('url', { required: true })}
+            {...register("url", { required: true })}
             name="url"
             type="text"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -124,7 +127,7 @@ const Admin = () => {
           <span className="text-gray-700">Category</span>
           <input
             placeholder="Name"
-            {...register('category', { required: true })}
+            {...register("category", { required: true })}
             name="category"
             type="text"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -135,7 +138,7 @@ const Admin = () => {
             Upload a .png or .jpg image (max 1MB).
           </span>
           <input
-            {...register('image', { required: true })}
+            {...register("image", { required: true })}
             onChange={uploadPhoto}
             type="file"
             accept="image/png, image/jpeg"
@@ -169,23 +172,22 @@ const Admin = () => {
   );
 };
 
-
 export const getServerSideProps = async ({ req, res }) => {
-    const session = getSession(req, res)
-    
-    if (!session) {
-        return {
-            redirect: {
-                permanent: false,
-                destination: '/api/auth/login',
-            },
-            props: {},
-        }
-    }
-    
-    return {
-        props: {},
-    }
-}
+  const session = getSession(req, res);
 
-export default Admin
+  if (!session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/api/auth/login",
+      },
+      props: {},
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
+
+export default Admin;
