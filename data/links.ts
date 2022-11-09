@@ -3,7 +3,8 @@ export const links = [
     category: "Open Source",
     description: "Fullstack React framework",
     id: "8a9020b2-363b-4a4f-ad26-d6d55b51bqes",
-    imageUrl: "https://nextjs.org/static/twitter-cards/home.jpg",
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/1200px-Nextjs-logo.svg.png",
     title: "Next.js",
     url: "https://nextjs.org",
   },
@@ -27,7 +28,7 @@ export const links = [
   },
   {
     category: "Open Source",
-    description: "GraphQL implementation ",
+    description: "GraphQL implementation",
     id: "2ea8cfb0-44a3-4c07-bdc2-31ffa135ea78",
     imageUrl: "https://www.apollographql.com/apollo-home.jpg",
     title: "Apollo GraphQL",
