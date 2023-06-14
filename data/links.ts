@@ -12,14 +12,15 @@ export const links = [
     category: "Open Source",
     description: "Next Generation ORM for TypeScript and JavaScript",
     id: "2a3121b2-363b-4a4f-ad26-d6c35b41bade",
-    imageUrl: "https://www.prisma.io/images/og-image.png",
+    imageUrl:
+      "https://ghost.ozoneteam.net/content/images/2022/10/Blog-Banner.png",
 
     title: "Prisma",
     url: "https://prisma.io",
   },
   {
     category: "Open Source",
-    description: "Utility-fist css framework",
+    description: "Utility-first css framework",
     id: "6a9122b2-363b-4a4f-ad26-d6c55b51baed",
     imageUrl:
       "https://pbs.twimg.com/media/FHDz3liXEAUz_UT?format=jpg&name=4096x4096",
