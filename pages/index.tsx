@@ -28,7 +28,7 @@ const AllLinksQuery = gql`
 
 function Home() {
   const { data, loading, error, fetchMore } = useQuery(AllLinksQuery, {
-    variables: { first: 3 },
+    variables: { first: 4 },
   });
 
   if (loading) return <p>Loading...</p>;
