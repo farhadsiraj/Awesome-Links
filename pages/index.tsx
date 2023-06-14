@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { gql, useQuery, useMutation } from "@apollo/client";
-import Link from "next/link";
+// import typeLink from "next/link";
+import type { Link } from "@prisma/client";
 import { AwesomeLink } from "../components/AwesomeLink";
 
 const AllLinksQuery = gql`
@@ -25,9 +26,9 @@ const AllLinksQuery = gql`
   }
 `;
 
-export default function Home() {
+function Home() {
   const { data, loading, error, fetchMore } = useQuery(AllLinksQuery, {
-    variables: { first: 3 },
+    variables: { first: 2 },
   });
 
   if (loading) return <p>Loading...</p>;
@@ -43,7 +44,7 @@ export default function Home() {
       </Head>
       <div className="container mx-auto max-w-5xl my-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {data?.links.edges.map(({ node }) => (
+          {data?.links.edges.map(({ node }: { node: Link }) => (
             <AwesomeLink
               title={node.title}
               category={node.category}
@@ -81,3 +82,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
