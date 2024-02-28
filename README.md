@@ -1,20 +1,8 @@
 # Awesome Links
 
-## Table of Contents
+Awesome-Links is a fullstack app built with Next.js, GraphQL, TypeScript, Prisma and PostgreSQL. Users can sign up and log in using Auth0, browse through a list of curated links, bookmark their favorite links, and create new ones.
 
-- [Getting Started](#getting-started)
-- [Stack](#stack)
-
-## Getting Started
-
-- Fork or directly clone this repository to your local machine.
-- `cd` into the project directory.
-- Run `npm install` to install the project dependencies locally.
-- TO RUN LOCALLY:
-- After the dependencies install, `npm run start-dev` to start the backend server and navigate to `localhost:3000` in the browser to view the app.
-- TO RUN WITH DOCKER:
-- After the dependencies install, `docker build -t awesome-links-docker .` to build Docker Image from the Dockerfile
-- Run `docker run -p 3000:3000 awesome-links-docker` to run the image as a docker container and navigate to `localhost:3000` in the browser to view the app.
+![farhadCoin](https://farhadsiraj.github.io/images/awesome.png)
 
 ## Stack
 
@@ -27,3 +15,4 @@
 - [TailwindCSS](https://tailwindcss.com/)
 - [Auth0](https://auth0.com/)
 - [Vercel](https://vercel.com/)
+- [Amazon S3](https://aws.amazon.com/s3/)
